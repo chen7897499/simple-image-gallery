@@ -1,0 +1,41 @@
+<h1>All Images</h1>
+
+<div class="row">
+  <ul class="list-unstyled">
+    <% @images.each do |image |%>
+      <li class="col-md-4">
+        <h2><%= image.title %></h2>
+        <p>
+          <a href="<%= image.file %>" data-lightbox="gallery" data-title="<%= image.title %>">
+            <img src="<%= image.file.url(:small) %>" width="100%"/>
+          </a>
+        </p>
+
+        <p>
+          <span class='st_facebook_hcount' displayText='Facebook' st_url="<%= request.base_url%>/images/<%= image.id %>"></span>
+          <span class='st_twitter_hcount' displayText='Tweet' st_url="<%= request.base_url%>/images/<%= image.id %>"></span>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<% if @auth %>
+
+<h1>Upload new image</h1>
+
+<form action="/images" method="post" enctype="multipart/form-data">
+  <p>
+    <input type="file" name="image[file]" id="file">
+  </p>
+
+  <p>
+    <input type="text" name="image[title]" class="form-control" placeholder="Enter a title for the image">
+  </p>
+
+  <p>
+    <button class="btn btn-primary">Upload!</button>
+  </p>
+</form>
+
+<% end %>

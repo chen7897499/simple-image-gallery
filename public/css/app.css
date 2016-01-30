@@ -1,0 +1,4 @@
+/* http://www.sandboxdev.com/2008/10/15/sharethis-button-cut-off-fix/ */
+.stButton * {
+box-sizing: content-box;
+}
