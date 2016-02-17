@@ -22,6 +22,7 @@
 
 <%= will_paginate @images %>
 
+<% if false %>
 <% if @auth %>
 
 <h1>Upload new image</h1>
@@ -33,6 +34,27 @@
 
   <p>
     <input type="text" name="image[title]" class="form-control" placeholder="Enter a title for the image">
+  </p>
+
+  <p>
+    <button class="btn btn-primary">Upload!</button>
+  </p>
+</form>
+
+<% end %>
+<% end %>
+
+<% if @auth %>
+
+<h1>Upload new image</h1>
+
+<form action="/images" method="post" enctype="multipart/form-data">
+  <p>
+    <input type="file" name="image[][file]" id="file" multiple />
+  </p>
+
+  <p>
+    <input type="text" name="image[][title]" class="form-control" placeholder="Enter a title for the image">
   </p>
 
   <p>

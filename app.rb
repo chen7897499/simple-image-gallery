@@ -20,8 +20,12 @@ class App < Sinatra::Base
 
   post "/images" do
     protected!
-    @image = Image.new params[:image]
-    @image.save
+    binding.pry
+    params[:image].each do |image|
+      image["title"] = params[:image].last["title"]
+      @image = Image.new image
+      @image.save
+    end
     redirect "/"
   end
 
