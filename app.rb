@@ -1,7 +1,10 @@
 class App < Sinatra::Base
+
+  helpers WillPaginate::Sinatra, WillPaginate::Sinatra::Helpers
+
   get '/' do
     @auth = authorized?
-    @images = Image.all
+    @images = Image.all.paginate(:page => params[:page], :per_page => 3)
     erb :index
   end
 
